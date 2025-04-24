@@ -125,6 +125,29 @@
 				<false/>
 			</dict>
 		</array>
+		<key>1DB27A81-03DD-4037-9B16-C988E31D02C2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>28D73131-7F36-436C-9FA6-988E108F7422</key>
 		<array>
 			<dict>
@@ -268,6 +291,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>89F4FD0F-EA46-4B12-847C-E4B0F9677163</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>67764921-B974-4D41-A880-7D7C20FEC182</key>
 		<array>
@@ -387,6 +420,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>19467065-1FA8-4C92-9F58-797A122BE296</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>93A184BC-1C41-4B8A-BD75-F935E4F2A0F0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1DB27A81-03DD-4037-9B16-C988E31D02C2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -630,6 +676,19 @@
 				<string>Browse chat histories</string>
 				<key>vitoclose</key>
 				<true/>
+			</dict>
+		</array>
+		<key>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>C05A6557-586B-4B86-AFFB-459590991D55</key>
@@ -2218,7 +2277,7 @@ kill_process_by_name(){
 
 # Kill processes for "api.py" and "poe-openai-proxy"
 kill_process_by_name "api.py"
-kill_process_by_name "poe-openai-proxy"
+# kill_process_by_name "poe-openai-proxy"
 exit 0</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2258,19 +2317,17 @@ exit 0</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>externaltriggerid</key>
-				<string>continue_images</string>
-				<key>passinputasargument</key>
+				<key>argument</key>
+				<string>'{query}', {var:POE2GPT_SCRIPT}</string>
+				<key>cleardebuggertext</key>
 				<false/>
-				<key>passvariables</key>
-				<false/>
-				<key>workflowbundleid</key>
-				<string>self</string>
+				<key>processoutputs</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
+			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
-			<string>0052DD7D-01DA-4E09-8B83-3F4994975B5F</string>
+			<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2287,7 +2344,101 @@ exit 0</string>
 			<key>type</key>
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
-			<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+			<string>89F4FD0F-EA46-4B12-847C-E4B0F9677163</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/bin/bash
+
+echo "Trying to restart poe-openai-proxy"
+kill_process_by_name(){
+  local process_name=$1
+  # Find the process IDs (PIDs) for the given process name
+  local pids=$(pgrep -f $process_name)
+
+  if [[ -n $pids ]]; then
+      echo "Killing processes: $process_name"
+      # Kill each process
+      for pid in $pids; do
+          kill $pid
+          echo "Killed process $pid"
+      done
+  else
+      echo "No processes found for: $process_name"
+  fi
+}
+
+# Kill processes for "api.py" and "poe-openai-proxy"
+kill_process_by_name "api.py"
+kill_process_by_name "poe-openai-proxy"
+exit 0</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1DB27A81-03DD-4037-9B16-C988E31D02C2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Define the directory of this script
+HERE=$POE2GPT_SCRIPT_Head
+cd $HERE
+
+zsh -i $HERE/start_server.zsh</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>restartp2g</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Restarting Poe 2 GPT</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>93A184BC-1C41-4B8A-BD75-F935E4F2A0F0</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2342,6 +2493,25 @@ exit 0</string>
 			<string>alfred.workflow.automation.task</string>
 			<key>uid</key>
 			<string>BD3EE72E-D542-4AEB-AED1-EA3C1F7BF6EC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>continue_images</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>0052DD7D-01DA-4E09-8B83-3F4994975B5F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2551,7 +2721,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>1420</real>
 			<key>ypos</key>
-			<real>1050</real>
+			<real>1325</real>
 		</dict>
 		<key>009F4B0B-7B7E-455F-9EA7-51334DBA92F1</key>
 		<dict>
@@ -2565,7 +2735,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>560</real>
 			<key>ypos</key>
-			<real>1195</real>
+			<real>1355</real>
 		</dict>
 		<key>02627B69-31FA-4441-A186-B2095B6F40B9</key>
 		<dict>
@@ -2615,6 +2785,15 @@ Query DALL·E via the `dalle` keyword.
 			<key>ypos</key>
 			<real>400</real>
 		</dict>
+		<key>1DB27A81-03DD-4037-9B16-C988E31D02C2</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>xpos</key>
+			<real>260</real>
+			<key>ypos</key>
+			<real>1160</real>
+		</dict>
 		<key>2345B220-18B0-4F70-9DD7-B7A20763FFBC</key>
 		<dict>
 			<key>xpos</key>
@@ -2636,7 +2815,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>900</real>
 			<key>ypos</key>
-			<real>1165</real>
+			<real>1325</real>
 		</dict>
 		<key>2F3B5565-0BBD-4DC6-962B-BEF7277AC599</key>
 		<dict>
@@ -2693,7 +2872,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>725</real>
 			<key>ypos</key>
-			<real>1295</real>
+			<real>1455</real>
 		</dict>
 		<key>67764921-B974-4D41-A880-7D7C20FEC182</key>
 		<dict>
@@ -2709,21 +2888,21 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>100</real>
 			<key>ypos</key>
-			<real>1295</real>
+			<real>1455</real>
 		</dict>
 		<key>6AAF51CA-1EE9-4CB8-B632-1B83BBD40B45</key>
 		<dict>
 			<key>xpos</key>
 			<real>345</real>
 			<key>ypos</key>
-			<real>1435</real>
+			<real>1595</real>
 		</dict>
 		<key>6EE7D872-0140-4B1B-B21A-D233250E9CC4</key>
 		<dict>
 			<key>xpos</key>
 			<real>520</real>
 			<key>ypos</key>
-			<real>1295</real>
+			<real>1455</real>
 		</dict>
 		<key>74890339-2177-4514-B0CD-9D06DF626D21</key>
 		<dict>
@@ -2762,6 +2941,13 @@ Query DALL·E via the `dalle` keyword.
 			<key>ypos</key>
 			<real>805</real>
 		</dict>
+		<key>89F4FD0F-EA46-4B12-847C-E4B0F9677163</key>
+		<dict>
+			<key>xpos</key>
+			<real>1030</real>
+			<key>ypos</key>
+			<real>1065</real>
+		</dict>
 		<key>8E6F5B12-57F7-4A90-8395-15D84683F235</key>
 		<dict>
 			<key>note</key>
@@ -2777,6 +2963,15 @@ Query DALL·E via the `dalle` keyword.
 			<real>1165</real>
 			<key>ypos</key>
 			<real>860</real>
+		</dict>
+		<key>93A184BC-1C41-4B8A-BD75-F935E4F2A0F0</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>xpos</key>
+			<real>100</real>
+			<key>ypos</key>
+			<real>1160</real>
 		</dict>
 		<key>93C97340-619A-4F67-AC74-5CC27EFAC17F</key>
 		<dict>
@@ -2799,7 +2994,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>1245</real>
 			<key>ypos</key>
-			<real>1165</real>
+			<real>1325</real>
 		</dict>
 		<key>A467C7CC-AACE-4179-8B5D-5D5C2F95CBC8</key>
 		<dict>
@@ -2876,7 +3071,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>1075</real>
 			<key>ypos</key>
-			<real>1165</real>
+			<real>1325</real>
 		</dict>
 		<key>BEF31BF9-C0C4-47F4-9ECA-3D50C2A84EE7</key>
 		<dict>
@@ -2894,12 +3089,21 @@ Query DALL·E via the `dalle` keyword.
 			<key>ypos</key>
 			<real>500</real>
 		</dict>
+		<key>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>xpos</key>
+			<real>460</real>
+			<key>ypos</key>
+			<real>1160</real>
+		</dict>
 		<key>C05A6557-586B-4B86-AFFB-459590991D55</key>
 		<dict>
 			<key>xpos</key>
 			<real>310</real>
 			<key>ypos</key>
-			<real>1295</real>
+			<real>1455</real>
 		</dict>
 		<key>C5247572-81BE-4493-9E7F-6436E3A53E19</key>
 		<dict>
@@ -2922,14 +3126,14 @@ Query DALL·E via the `dalle` keyword.
 			<key>xpos</key>
 			<real>100</real>
 			<key>ypos</key>
-			<real>1165</real>
+			<real>1325</real>
 		</dict>
 		<key>C81D4557-D55C-4B23-8FB3-B28519D292A0</key>
 		<dict>
 			<key>xpos</key>
 			<real>725</real>
 			<key>ypos</key>
-			<real>1165</real>
+			<real>1325</real>
 		</dict>
 		<key>CBBF8BED-C42D-4793-8FEA-EA80FC94C493</key>
 		<dict>
@@ -2952,9 +3156,9 @@ Query DALL·E via the `dalle` keyword.
 		<key>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</key>
 		<dict>
 			<key>xpos</key>
-			<real>710</real>
+			<real>720</real>
 			<key>ypos</key>
-			<real>1065</real>
+			<real>1060</real>
 		</dict>
 		<key>E5D42111-A4E5-4C7E-AED9-B0A379A66986</key>
 		<dict>
@@ -2975,7 +3179,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>335</real>
+			<real>330</real>
 			<key>ypos</key>
 			<real>1030</real>
 		</dict>
@@ -2984,7 +3188,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>335</real>
+			<real>330</real>
 			<key>ypos</key>
 			<real>905</real>
 		</dict>
