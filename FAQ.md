@@ -9,6 +9,7 @@ The workflow offers the ability to change the API end points and override model 
 Add a new https_proxy key in [Workflow Environment Variables](https://www.alfredapp.com/help/workflows/advanced/variables/#environment). Or configure the proxy for all workflows under Alfred Preferences → Advanced → Network.
 
 ### Why can’t I use the workflow with a ChatGPT Plus subscription?
+
 [The ChatGPT API and ChatGPT Plus subscription are billed separately.](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus#h_e3d911c532)
 
 ### How can I reuse pre-made prompts?
@@ -25,16 +26,10 @@ Something always happens, so check the [debugger](https://www.alfredapp.com/hel
 
 ### How do I report an issue?
 
-Accurate and thorough information is crucial for a proper diagnosis. When reporting issues, please include your *exact* installed versions of:
+Accurate and thorough information is crucial for a proper diagnosis. **At a minimum, your report should include:**
 
-* The Workflow.
-* Alfred.
-* macOS.
-
-In addition to:
-
-* The [debugger](https://www.alfredapp.com/help/workflows/advanced/debugger/) output. Perform the failing action and click *Copy* on the top right.
-* Details on what you did, what happened, and what you expected to happen. A [short video](https://support.apple.com/en-us/HT208721) of the steps with the debugger open may help to find the problem faster.
+* The [debugger](https://www.alfredapp.com/help/workflows/advanced/debugger/) output of the failing action.
+* Your installed versions of: the Workflow, Alfred, and macOS. *Be precise, don’t say “latest”.*
 
 ### Why do I keep getting Quota exceeded?
 
@@ -42,7 +37,7 @@ You need API credits to use the workflow. You can [view your remaining credits a
 
 ### Why do I keep getting `[Connection Stalled]`?
 
-This happens when the workflow takes too long to receive a reply from the API. It indicates a problem either with your connection or OpenAI’s service.
+This happens when the workflow takes too long to receive a reply from the API. Try increasing the timeout in the [Workflow’s Configuration](https://www.alfredapp.com/help/workflows/user-configuration/). If the problem persists, it indicates a problem either with your connection or OpenAI’s service.
 
 [Open a terminal](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac) and run the following (replace `YOUR_API_KEY` within the quotes with your API key):
 
