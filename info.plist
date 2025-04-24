@@ -1750,12 +1750,13 @@ function markdownChat(messages, ignoreLastInterrupted = true) {
       return `${accumulator}${current["content"]}\n\n`
 
     if (current["role"] === "user") {
+      const userMessage = `# ⊙ You\n\n${current["content"]}\n\n# ⊚ Assistant`
       const userTwice = allMessages[index + 1]?.["role"] === "user" // "user" role twice in a row
       const lastMessage = index === allMessages.length - 1 // "user is last message
 
       return userTwice || (lastMessage &amp;&amp; !ignoreLastInterrupted) ?
-        `${accumulator}### ${current["content"]}\n\n[Answer Interrupted]\n\n` :
-        `${accumulator}### ${current["content"]}\n\n`
+        `${accumulator}${userMessage}\n\n[Answer Interrupted]\n\n` :
+        `${accumulator}${userMessage}\n\n`
     }
 
     // Ignore any other role
@@ -1908,12 +1909,13 @@ function markdownChat(messages, ignoreLastInterrupted = true) {
       return `${accumulator}${current["content"]}\n\n`
 
     if (current["role"] === "user") {
+      const userMessage = `# ⊙ You\n\n${current["content"]}\n\n# ⊚ Assistant`
       const userTwice = allMessages[index + 1]?.["role"] === "user" // "user" role twice in a row
       const lastMessage = index === allMessages.length - 1 // "user is last message
 
       return userTwice || (lastMessage &amp;&amp; !ignoreLastInterrupted) ?
-        `${accumulator}### ${current["content"]}\n\n[Answer Interrupted]\n\n` :
-        `${accumulator}### ${current["content"]}\n\n`
+        `${accumulator}${userMessage}\n\n[Answer Interrupted]\n\n` :
+        `${accumulator}${userMessage}\n\n`
     }
 
     // Ignore any other role
@@ -3592,6 +3594,8 @@ Query DALL·E via the `dalle` keyword.
 		<string>http://localhost:3700</string>
 		<key>persona</key>
 		<string>default</string>
+		<key>timeout_seconds</key>
+		<string>5</string>
 	</dict>
 	<key>version</key>
 	<string>2024.19`</string>
