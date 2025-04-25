@@ -1,0 +1,3 @@
+[submodule "poe-to-gpt"]
+	path = poe-to-gpt
+	url = git@github.com:alabamagan/poe-to-gpt.git
