@@ -37,7 +37,7 @@ def main(args):
                 f.write(avail_prompts[args[1]])
                 
             with open("active_persona.txt", 'w') as f:
-                f.write(args[1].capitalize())
+                f.write(args[1])
 
 
 if __name__ == '__main__':

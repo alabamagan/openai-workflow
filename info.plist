@@ -2232,10 +2232,8 @@ function run() {
 				<integer>102</integer>
 				<key>script</key>
 				<string># Define the directory of this script
-HERE=$POE2GPT_SCRIPT_Head
-cd $HERE
-
-zsh -i $HERE/start_server.zsh</string>
+cd ./poe-to-gpt
+zsh -i ./start_server.zsh</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -2277,9 +2275,8 @@ kill_process_by_name(){
   fi
 }
 
-# Kill processes for "api.py" and "poe-openai-proxy"
-kill_process_by_name "api.py"
-# kill_process_by_name "poe-openai-proxy"
+# Kill processes for "api.py" 
+kill_process_by_name "app.py"
 exit 0</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2360,7 +2357,6 @@ exit 0</string>
 				<key>script</key>
 				<string>#!/bin/bash
 
-echo "Trying to restart poe-openai-proxy"
 kill_process_by_name(){
   local process_name=$1
   # Find the process IDs (PIDs) for the given process name
@@ -2378,9 +2374,8 @@ kill_process_by_name(){
   fi
 }
 
-# Kill processes for "api.py" and "poe-openai-proxy"
-kill_process_by_name "api.py"
-kill_process_by_name "poe-openai-proxy"
+# Kill processes for "api.py" 
+kill_process_by_name "app.py"
 exit 0</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2405,10 +2400,8 @@ exit 0</string>
 				<integer>102</integer>
 				<key>script</key>
 				<string># Define the directory of this script
-HERE=$POE2GPT_SCRIPT_Head
-cd $HERE
-
-zsh -i $HERE/start_server.zsh</string>
+cd ./poe-to-gpt
+zsh -i ./start_server.zsh</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>

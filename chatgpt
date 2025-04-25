@@ -133,9 +133,15 @@ function readStream(streamFile, chatFile, pidStreamFile, timeoutSeconds) {
     .map(item => item.replace(/^data: /, "")) // Remove extraneous "data: "
     .flatMap(item => { try { return JSON.parse(item) } catch { return [] } }) // Parse as JSON
 
-  const persona =  $.NSString.stringWithContentsOfFileEncodingError("active_persona.txt", $.NSUTF8StringEncoding, null).js;
+  var persona =  $.NSString.stringWithContentsOfFileEncodingError("active_persona.txt", $.NSUTF8StringEncoding, null).js;
   const responseText = chunks.map(item => item["choices"][0]?.["delta"]["content"]).join("")
   const finishReason = chunks.slice(-1)[0]?.["choices"][0]["finish_reason"]
+
+  // Capitalize first letter character after emoji if present
+  persona = persona.replace(/^([\u{1F300}-\u{1F9FF}])?([a-zA-Z])/u, (match, emoji, letter) => 
+    (emoji || '') + letter.toUpperCase()
+  );
+  console.log("persona", persona)
 
   // If reponse is not finished
   if (!finishReason) {
