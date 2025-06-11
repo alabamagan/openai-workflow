@@ -129,7 +129,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+				<string>EEF0F261-C29A-4A88-8518-634A98721F14</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -139,7 +139,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</string>
+				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -676,19 +676,6 @@
 				<string>Browse chat histories</string>
 				<key>vitoclose</key>
 				<true/>
-			</dict>
-		</array>
-		<key>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
 			</dict>
 		</array>
 		<key>C05A6557-586B-4B86-AFFB-459590991D55</key>
@@ -2258,25 +2245,7 @@ zsh -i ./start_server.zsh</string>
 				<key>script</key>
 				<string>#!/bin/bash
 
-kill_process_by_name(){
-  local process_name=$1
-  # Find the process IDs (PIDs) for the given process name
-  local pids=$(pgrep -f $process_name)
-
-  if [[ -n $pids ]]; then
-      echo "Killing processes: $process_name"
-      # Kill each process
-      for pid in $pids; do
-          kill $pid
-          echo "Killed process $pid"
-      done
-  else
-      echo "No processes found for: $process_name"
-  fi
-}
-
-# Kill processes for "api.py" 
-kill_process_by_name "app.py"
+pkill -9 -f app.py
 exit 0</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2357,25 +2326,7 @@ exit 0</string>
 				<key>script</key>
 				<string>#!/bin/bash
 
-kill_process_by_name(){
-  local process_name=$1
-  # Find the process IDs (PIDs) for the given process name
-  local pids=$(pgrep -f $process_name)
-
-  if [[ -n $pids ]]; then
-      echo "Killing processes: $process_name"
-      # Kill each process
-      for pid in $pids; do
-          kill $pid
-          echo "Killed process $pid"
-      done
-  else
-      echo "No processes found for: $process_name"
-  fi
-}
-
-# Kill processes for "api.py" 
-kill_process_by_name "app.py"
+pkill -9 -f app.py
 exit 0</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2388,31 +2339,6 @@ exit 0</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>1DB27A81-03DD-4037-9B16-C988E31D02C2</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<true/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string># Define the directory of this script
-cd ./poe-to-gpt
-zsh -i ./start_server.zsh</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -3084,15 +3010,6 @@ Query DALL·E via the `dalle` keyword.
 			<key>ypos</key>
 			<real>500</real>
 		</dict>
-		<key>BF5F9EE2-CD2C-48BB-9BC4-18C1E35A9C37</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>5</integer>
-			<key>xpos</key>
-			<real>460</real>
-			<key>ypos</key>
-			<real>1160</real>
-		</dict>
 		<key>C05A6557-586B-4B86-AFFB-459590991D55</key>
 		<dict>
 			<key>xpos</key>
@@ -3174,7 +3091,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>330</real>
+			<real>445</real>
 			<key>ypos</key>
 			<real>1030</real>
 		</dict>
@@ -3183,7 +3100,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>330</real>
+			<real>445</real>
 			<key>ypos</key>
 			<real>905</real>
 		</dict>
@@ -3312,6 +3229,14 @@ Query DALL·E via the `dalle` keyword.
 					<array>
 						<string>GPT-4.1</string>
 						<string>gpt-4.1</string>
+					</array>
+					<array>
+						<string>GPT-4.1</string>
+						<string>gpt-4.1</string>
+					</array>
+					<array>
+						<string>GPT-4.1-Mini</string>
+						<string>gpt-4.1-mini</string>
 					</array>
 				</array>
 			</dict>
@@ -3592,7 +3517,7 @@ Query DALL·E via the `dalle` keyword.
 		<key>persona</key>
 		<string>default</string>
 		<key>timeout_seconds</key>
-		<string>5</string>
+		<string>15</string>
 	</dict>
 	<key>version</key>
 	<string>2024.19`</string>
