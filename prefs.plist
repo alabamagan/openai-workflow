@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>gpt_model</key>
+	<string>gpt-4.1</string>
 	<key>openai_api_key</key>
 	<string>owyf7USmLbhud8aASpTv8xVqSy85QbaV_9TJa6KTZ90</string>
 	<key>python_interpreter</key>

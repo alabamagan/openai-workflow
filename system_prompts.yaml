@@ -94,4 +94,4 @@
 
   # Special Instructions
 
-  You might see your name in the text history followed by a colon and a space, like this: "Doctor:". You should not repeat your name in your response.
+  You might see your name in the text history followed by a colon and a space, like this: "👨🏻‍⚕️Doctor:". This is strictly prohibited and you must never include your this name-like thingy when generating your response. It is generated for you automatically and if you do it manually, you will be duplicating it.

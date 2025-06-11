@@ -87,6 +87,16 @@ function startStream(apiEndpoint, apiKey, apiOrgHeader, model, systemPrompt, con
 }
 
 function readStream(streamFile, chatFile, pidStreamFile, timeoutSeconds) {
+  console.log("readStream")
+  if (!$.NSFileManager.defaultManager.fileExistsAtPath(streamFile)) {
+    console.log(`Stream file not found: ${streamFile}`)
+    return JSON.stringify({
+      response: "[Stream file not found]",
+      behaviour: { response: "replacelast" }
+    })
+  }
+  console.log(`Reading stream file: ${streamFile}`)
+  console.log("Stream file exists:", $.NSFileManager.defaultManager.fileExistsAtPath(streamFile))
   const streamMarker = envVar("stream_marker") === "1"
   const streamString = $.NSString.stringWithContentsOfFileEncodingError(streamFile, $.NSUTF8StringEncoding, undefined).js
 
@@ -141,8 +151,6 @@ function readStream(streamFile, chatFile, pidStreamFile, timeoutSeconds) {
   persona = persona.replace(/^([\u{1F300}-\u{1F9FF}])?([a-zA-Z])/u, (match, emoji, letter) => 
     (emoji || '') + letter.toUpperCase()
   );
-  console.log("persona", persona)
-
   // If reponse is not finished
   if (!finishReason) {
     // If File not modified for over a few seconds, connection stalled
@@ -153,8 +161,12 @@ function readStream(streamFile, chatFile, pidStreamFile, timeoutSeconds) {
       if (responseText.length > 0) appendChat(chatFile, { role: "assistant", content: responseText })
 
       // Delete stream files
-      deleteFile(streamFile)
-      deleteFile(pidStreamFile)
+      try {
+        deleteFile(streamFile)
+        deleteFile(pidStreamFile)
+      } catch (error) {
+        console.log("Error deleting stream files:", error)
+      }
 
       // Stop
       return JSON.stringify({
@@ -171,12 +183,22 @@ function readStream(streamFile, chatFile, pidStreamFile, timeoutSeconds) {
     })
 
     // Continue loop
+    if (responseText) {
+      // Remove any existing persona prefix from the response
+      const cleanedResponse = responseText.replace(`**${persona}**: `, '');
+      // Return JSON with cleaned response and persona prefix
+      return JSON.stringify({
+        rerun: 0.1, // Rerun after 0.1 seconds
+        variables: { streaming_now: true }, // Keep streaming flag enabled
+        response: `**${persona}**: ` + cleanedResponse, // Add persona prefix to cleaned response
+        behaviour: { response: "replacelast", scroll: "end" } // Replace last response and scroll to end
+      });
+    }
+    // If no response text yet, just continue streaming
     return JSON.stringify({
-      rerun: 0.1,
-      variables: { streaming_now: true },
-      response: `**${persona}**: ` + responseText,
-      behaviour: { response: "replacelast", scroll: "end" }
-    })
+      rerun: 0.1, // Rerun after 0.1 seconds
+      variables: { streaming_now: true } // Keep streaming flag enabled
+    });
   }
 
   // When finished, write history and delete stream files
@@ -229,7 +251,7 @@ function run(argv) {
   // Reload conversation and rerun to resume stream
   if (fileExists(streamFile)) return JSON.stringify({
     rerun: 0.1,
-    variables: { streaming_now: true, stream_marker: true },
+    variables: { streaming_now: true, stream_marker: true, status: "Resuming stream" },
     response: markdownChat(previousChat, true),
     behaviour: { scroll: "end" }
   })
@@ -237,6 +259,7 @@ function run(argv) {
   // If argument is empty, return previous conversation
   if (typedQuery.length === 0) return JSON.stringify({
     response: markdownChat(previousChat, false),
+    variables: { status: "Empty query" },
     behaviour: { scroll: "end" }
   })
 
