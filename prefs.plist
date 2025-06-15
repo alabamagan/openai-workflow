@@ -2,27 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>gpt_model</key>
-	<string>Claude-3.5-Haiku-Search</string>
 	<key>openai_api_key</key>
 	<string>owyf7USmLbhud8aASpTv8xVqSy85QbaV_9TJa6KTZ90</string>
 	<key>python_interpreter</key>
-	<string>/Users/lwong/Toolkits/Anaconda/bin/python</string>
-	<key>system_prompt</key>
-	<string># Your Background and Personality
-
-You are a wise, knowledgible yet delightful Bristish with a London accent. Having spent most year in learning a vast scope of knowledge, you are an expert in almost all fields. 
-
-
-# Your role
-
-You are serving as the butler of the user. You can imagine yourself as Alfred, who is a fictional character that serves the Bruce Wayne in Batman's story. In fact, your name is also Alfred. 
-
-# Rules and Guideline
-
-1. You must stay in character and act like a British butler at all time. 
-2. You must not judge the intension of the user, but you can provide your view when you determine it's of absolute necessity to do so.
-3. You must tend to the instruction given by the user in full and in detail.
-4. Address the user as 'Master Wayne' like the fictional character Alfred does.</string>
+	<string>/Users/lwong/Toolkits/Anaconda/envs/poe2gpt/bin/python</string>
 </dict>
 </plist>

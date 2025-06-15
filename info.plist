@@ -139,19 +139,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>EEF0F261-C29A-4A88-8518-634A98721F14</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>221989F5-6E91-4C4B-BA63-BE912864BFED</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
 				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -2306,6 +2293,21 @@ exit 0</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>soundname</key>
+				<string>Bottle</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>C4B30C5D-43A3-481A-9198-08305DEA8A29</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -2321,21 +2323,6 @@ exit 0</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>102D8D11-CA1C-4822-BFEA-31753F0257F1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>soundname</key>
-				<string>Bottle</string>
-				<key>systemsound</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.playsound</string>
-			<key>uid</key>
-			<string>C4B30C5D-43A3-481A-9198-08305DEA8A29</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2530,6 +2517,39 @@ exit 0</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>behaviour</key>
+				<integer>2</integer>
+				<key>fontmode</key>
+				<integer>0</integer>
+				<key>fontsizing</key>
+				<integer>0</integer>
+				<key>footertext</key>
+				<string>↩ New prompt · ⌘↩ Archive images · ⌥↩ Reveal last image</string>
+				<key>inputfile</key>
+				<string>dalle</string>
+				<key>inputtype</key>
+				<integer>1</integer>
+				<key>loadingtext</key>
+				<string>Querying DALL·E API…</string>
+				<key>outputmode</key>
+				<integer>0</integer>
+				<key>scriptinput</key>
+				<integer>2</integer>
+				<key>spellchecking</key>
+				<integer>0</integer>
+				<key>stackview</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.userinterface.text</string>
+			<key>uid</key>
+			<string>C05A6557-586B-4B86-AFFB-459590991D55</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string></string>
 				<key>passthroughargument</key>
@@ -2580,39 +2600,6 @@ exit 0</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>698A6D21-8A81-4110-9BF3-BF2FA07C5DC3</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>behaviour</key>
-				<integer>2</integer>
-				<key>fontmode</key>
-				<integer>0</integer>
-				<key>fontsizing</key>
-				<integer>0</integer>
-				<key>footertext</key>
-				<string>↩ New prompt · ⌘↩ Archive images · ⌥↩ Reveal last image</string>
-				<key>inputfile</key>
-				<string>dalle</string>
-				<key>inputtype</key>
-				<integer>1</integer>
-				<key>loadingtext</key>
-				<string>Querying DALL·E API…</string>
-				<key>outputmode</key>
-				<integer>0</integer>
-				<key>scriptinput</key>
-				<integer>2</integer>
-				<key>spellchecking</key>
-				<integer>0</integer>
-				<key>stackview</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.userinterface.text</string>
-			<key>uid</key>
-			<string>C05A6557-586B-4B86-AFFB-459590991D55</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2776,7 +2763,7 @@ Query DALL·E via the `dalle` keyword.
 		<key>221989F5-6E91-4C4B-BA63-BE912864BFED</key>
 		<dict>
 			<key>xpos</key>
-			<real>545</real>
+			<real>595</real>
 			<key>ypos</key>
 			<real>905</real>
 		</dict>
@@ -3078,14 +3065,14 @@ Query DALL·E via the `dalle` keyword.
 		<key>C05A6557-586B-4B86-AFFB-459590991D55</key>
 		<dict>
 			<key>xpos</key>
-			<real>310</real>
+			<real>330</real>
 			<key>ypos</key>
-			<real>1455</real>
+			<real>1325</real>
 		</dict>
 		<key>C4B30C5D-43A3-481A-9198-08305DEA8A29</key>
 		<dict>
 			<key>xpos</key>
-			<real>545</real>
+			<real>595</real>
 			<key>ypos</key>
 			<real>1030</real>
 		</dict>
@@ -3163,7 +3150,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>405</real>
+			<real>445</real>
 			<key>ypos</key>
 			<real>1030</real>
 		</dict>
@@ -3172,7 +3159,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>405</real>
+			<real>445</real>
 			<key>ypos</key>
 			<real>905</real>
 		</dict>
@@ -3309,10 +3296,6 @@ Query DALL·E via the `dalle` keyword.
 					<array>
 						<string>GPT-4.1-Mini</string>
 						<string>gpt-4.1-mini</string>
-					</array>
-					<array>
-						<string>Claude-3.5-Haiku-Search</string>
-						<string>Claude-3.5-Haiku-Search</string>
 					</array>
 				</array>
 			</dict>
@@ -3593,7 +3576,6 @@ Query DALL·E via the `dalle` keyword.
 		<key>persona</key>
 		<string>default</string>
 		<key>timeout_seconds</key>
-		<string>15</string>
 		<string>15</string>
 	</dict>
 	<key>version</key>
