@@ -34,10 +34,13 @@ def main(args):
             # Dump into active_system_prompt
             with open("active_system_prompt.txt", "w") as f:
                 # yaml.safe_dump({args[1]: f"{avail_prompts[args[1]]}"}, file)
+                print("Switched to: ", args[1])
                 f.write(avail_prompts[args[1]])
                 
             with open("active_persona.txt", 'w') as f:
                 f.write(args[1])
+        else:
+            print("Wrong input!")
 
 
 if __name__ == '__main__':

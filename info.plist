@@ -139,6 +139,19 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>EEF0F261-C29A-4A88-8518-634A98721F14</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>221989F5-6E91-4C4B-BA63-BE912864BFED</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -701,6 +714,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>C4B30C5D-43A3-481A-9198-08305DEA8A29</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C5247572-81BE-4493-9E7F-6436E3A53E19</key>
 		<array>
 			<dict>
@@ -841,7 +867,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+				<string>C4B30C5D-43A3-481A-9198-08305DEA8A29</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -854,7 +880,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+				<string>221989F5-6E91-4C4B-BA63-BE912864BFED</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -2157,15 +2183,15 @@ function run() {
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>0</integer>
+				<integer>102</integer>
 				<key>script</key>
-				<string></string>
+				<string>$python_interpreter select_persona.py {query}</string>
 				<key>scriptargtype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>scriptfile</key>
-				<string>select_persona.py</string>
+				<string></string>
 				<key>type</key>
-				<integer>8</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -2186,6 +2212,21 @@ function run() {
 			<string>alfred.workflow.output.playsound</string>
 			<key>uid</key>
 			<string>9131A9B8-5FE2-49BF-B47E-1DD784DE1C73</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Glass</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>221989F5-6E91-4C4B-BA63-BE912864BFED</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2246,6 +2287,7 @@ zsh -i ./start_server.zsh</string>
 				<string>#!/bin/bash
 
 pkill -9 -f app.py
+pkill -9 -f app.py
 exit 0</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2285,17 +2327,15 @@ exit 0</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>'{query}', {var:POE2GPT_SCRIPT}</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
+				<key>soundname</key>
+				<string>Bottle</string>
+				<key>systemsound</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
+			<string>alfred.workflow.output.playsound</string>
 			<key>uid</key>
-			<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
+			<string>C4B30C5D-43A3-481A-9198-08305DEA8A29</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2326,6 +2366,7 @@ exit 0</string>
 				<key>script</key>
 				<string>#!/bin/bash
 
+pkill -9 -f app.py
 pkill -9 -f app.py
 exit 0</string>
 				<key>scriptargtype</key>
@@ -2360,6 +2401,23 @@ exit 0</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>93A184BC-1C41-4B8A-BD75-F935E4F2A0F0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}', {var:POE2GPT_SCRIPT}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2715,6 +2773,13 @@ Query DALL·E via the `dalle` keyword.
 			<key>ypos</key>
 			<real>1160</real>
 		</dict>
+		<key>221989F5-6E91-4C4B-BA63-BE912864BFED</key>
+		<dict>
+			<key>xpos</key>
+			<real>545</real>
+			<key>ypos</key>
+			<real>905</real>
+		</dict>
 		<key>2345B220-18B0-4F70-9DD7-B7A20763FFBC</key>
 		<dict>
 			<key>xpos</key>
@@ -3017,6 +3082,13 @@ Query DALL·E via the `dalle` keyword.
 			<key>ypos</key>
 			<real>1455</real>
 		</dict>
+		<key>C4B30C5D-43A3-481A-9198-08305DEA8A29</key>
+		<dict>
+			<key>xpos</key>
+			<real>545</real>
+			<key>ypos</key>
+			<real>1030</real>
+		</dict>
 		<key>C5247572-81BE-4493-9E7F-6436E3A53E19</key>
 		<dict>
 			<key>xpos</key>
@@ -3068,9 +3140,9 @@ Query DALL·E via the `dalle` keyword.
 		<key>E2A15B25-C98F-4B5E-83B0-CF60CE8C091F</key>
 		<dict>
 			<key>xpos</key>
-			<real>720</real>
+			<real>755</real>
 			<key>ypos</key>
-			<real>1060</real>
+			<real>1190</real>
 		</dict>
 		<key>E5D42111-A4E5-4C7E-AED9-B0A379A66986</key>
 		<dict>
@@ -3091,7 +3163,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>445</real>
+			<real>405</real>
 			<key>ypos</key>
 			<real>1030</real>
 		</dict>
@@ -3100,7 +3172,7 @@ Query DALL·E via the `dalle` keyword.
 			<key>colorindex</key>
 			<integer>5</integer>
 			<key>xpos</key>
-			<real>445</real>
+			<real>405</real>
 			<key>ypos</key>
 			<real>905</real>
 		</dict>
@@ -3237,6 +3309,10 @@ Query DALL·E via the `dalle` keyword.
 					<array>
 						<string>GPT-4.1-Mini</string>
 						<string>gpt-4.1-mini</string>
+					</array>
+					<array>
+						<string>Claude-3.5-Haiku-Search</string>
+						<string>Claude-3.5-Haiku-Search</string>
 					</array>
 				</array>
 			</dict>
@@ -3517,6 +3593,7 @@ Query DALL·E via the `dalle` keyword.
 		<key>persona</key>
 		<string>default</string>
 		<key>timeout_seconds</key>
+		<string>15</string>
 		<string>15</string>
 	</dict>
 	<key>version</key>
